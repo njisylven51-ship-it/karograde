@@ -23,30 +23,31 @@ async function startServer() {
   app.use(express.json());
 
   // Strict CORS setup
-  const allowedOrigins = [
-    "http://localhost:5173",
-    "http://localhost:3000",
-    "https://karograde-p1p5.vercel.app",
-    "https://karograde-afnl.vercel.app/"
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://karograde-p1p5.vercel.app",
+  "https://karograde-afnl.vercel.app"
+];
 
-  ];
-  if (process.env.APP_URL) {
-    allowedOrigins.push(process.env.APP_URL);
-  }
+if (process.env.APP_URL) {
+  allowedOrigins.push(process.env.APP_URL);
+}
 
-  app.use(
-    cors({
-      origin: function (origin, callback) {
-        // Allow same-origin/internal requests or matches list
-        if (!origin || allowedOrigins.includes(origin) || process.env.NODE_ENV !== "production") {
-          callback(null, true);
-        } else {
-          callback(new Error("Not allowed by CORS"));
-        }
-      },
-      credentials: true,
-    })
-  );
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true
+}));
+
+app.use(express.json());
 
   // --- API ROUTES ---
 
