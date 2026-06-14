@@ -14,6 +14,7 @@ dotenv.config();
 async function startServer() {
   const app = express();
   const PORT = 3000;
+  
 
   // Gracefully initiate MongoDB Atlas Connection
   await connectDB();
@@ -25,7 +26,9 @@ async function startServer() {
   const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://your-frontend.vercel.app"
+    "https://your-frontend.vercel.app",
+    "https://karograde-p1p5.vercel.app",
+
   ];
   if (process.env.APP_URL) {
     allowedOrigins.push(process.env.APP_URL);
