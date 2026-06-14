@@ -26,8 +26,8 @@ async function startServer() {
   const allowedOrigins = [
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://your-frontend.vercel.app",
     "https://karograde-p1p5.vercel.app",
+    "https://karograde-afnl.vercel.app/"
 
   ];
   if (process.env.APP_URL) {
