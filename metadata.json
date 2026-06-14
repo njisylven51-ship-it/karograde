@@ -1,0 +1,6 @@
+{
+  "name": "KaroGrade",
+  "description": "Automated MCQ Grading and Assessment System for schools, colleges, and universities with instant auto-grading, and one-attempt-only exam rule.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
